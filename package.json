@@ -1,0 +1,36 @@
+{
+	"name": "choose-next-game",
+	"version": "0.1.0",
+	"description": "What is the next game for me to play?",
+	"private": false,
+	"dependencies": {
+		"react": "^16.8.4",
+		"react-dom": "^16.8.4",
+		"react-scripts": "2.1.5"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/pekac45/choose-next-game.git"
+	},
+	"author": "Michal Pekar",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/pekac45/choose-next-game/issues"
+	},
+	"homepage": "https://github.com/pekac45/choose-next-game#readme"
+}
