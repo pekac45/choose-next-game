@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "extends": ["airbnb", "prettier", "react-app", "plugin:prettier/recommended"],
   "plugins": ["prettier"],
   "env": {
@@ -7,6 +8,7 @@
   },
   "rules": {
     "prettier/prettier": ["error"],
+    "comma-dangle": "off",
     "jsx-a11y/href-no-hash": [0],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "no-console": "off"

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './app.css';
 import ReactImage from './react.png';
 
-export default class App extends Component {
+class App extends Component {
   state = { username: null };
 
   componentDidMount() {
@@ -21,3 +21,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default App;
