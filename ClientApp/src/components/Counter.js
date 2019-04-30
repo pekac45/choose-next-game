@@ -30,6 +30,9 @@ export class Counter extends Component {
   }
 
   render() {
+    const buttonStyle = {
+      margin: '10px'
+    };
     return (
       <div>
         <h1>Counter</h1>
@@ -40,13 +43,13 @@ export class Counter extends Component {
           Current count: <strong>{this.state.currentCount}</strong>
         </p>
 
-        <button className="btn btn-primary" onClick={this.incrementCounter}>
-          +
+        <button className="btn btn-primary" onClick={this.incrementCounter} style={buttonStyle}>
+          Increment
         </button>
-        <button className="btn btn-secondary" onClick={this.decrementCounter}>
-          -
+        <button className="btn btn-secondary" onClick={this.decrementCounter} style={buttonStyle}>
+          Decrement
         </button>
-        <button className="btn btn-danger" onClick={this.resetCounter}>
+        <button className="btn btn-danger" onClick={this.resetCounter} style={buttonStyle}>
           Reset
         </button>
       </div>
