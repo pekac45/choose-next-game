@@ -1,16 +1,26 @@
 import Header from "./Header";
+import styled, { createGlobalStyle } from "styled-components";
 
-const layoutStyle = {
-	margin: 20,
-	padding: 20,
-	border: "1px solid #DDD"
-};
+const LayoutWrapper = styled.div`
+	color: red;
+`;
+
+const GlobalStyle = createGlobalStyle`
+  body {
+		margin: 0;
+		padding: 0;
+
+		@import url('https://fonts.googleapis.com/css?family=Dosis');
+		font-family: 'Dosis', sans-serif;
+	}
+`;
 
 const Layout = props => (
-	<div style={layoutStyle}>
+	<LayoutWrapper>
+		<GlobalStyle />
 		<Header />
 		{props.children}
-	</div>
+	</LayoutWrapper>
 );
 
 export default Layout;

@@ -23,6 +23,8 @@
 		"express": "^4.17.1",
 		"next": "^8.1.0",
 		"react": "^16.8.6",
-		"react-dom": "^16.8.6"
+		"react-dom": "^16.8.6",
+		"styled-components": "^4.2.0",
+		"styled-css-grid": "^1.2.1"
 	}
 }
