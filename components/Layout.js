@@ -1,3 +1,5 @@
+import { Grid, Cell } from "styled-css-grid";
+
 import Header from "./Header";
 import styled, { createGlobalStyle } from "styled-components";
 
@@ -24,7 +26,9 @@ const Layout = props => (
 	<LayoutWrapper>
 		<GlobalStyle />
 		<Header />
-		{props.children}
+		<Grid gap={0} rows={10} height={"45px"}>
+			{props.children}
+		</Grid>
 	</LayoutWrapper>
 );
 

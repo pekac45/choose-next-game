@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 import GameList from "../components/Table";
+import { Grid, Cell } from "styled-css-grid";
 
 const games = [
 	{ id: 1, name: "Great Western Trail", hotness: 100, plays: 1 },
@@ -9,8 +10,12 @@ const games = [
 
 const Index = () => (
 	<Layout>
-		<h1>Choose next game</h1>
-		<GameList games={games} />
+		<Cell left={5} width={4} center>
+			<h1>Choose next game</h1>
+		</Cell>
+		<Cell left={2} width={8} top={3}>
+			<GameList games={games} />
+		</Cell>
 	</Layout>
 );
 

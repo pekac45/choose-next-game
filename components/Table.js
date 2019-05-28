@@ -1,12 +1,22 @@
 import { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiceD20 } from "@fortawesome/free-solid-svg-icons";
+import { Grid, Cell } from "styled-css-grid";
+import styled from "styled-components";
+
+const TableCell = styled.td`
+	padding-right: 20px;
+`;
 
 class GameRow extends Component {
 	render() {
 		const game = this.props.game;
 		return (
 			<tr>
-				<td>{game.name}</td>
-				<td>Play!</td>
+				<TableCell>{game.name}</TableCell>
+				<TableCell>
+					<FontAwesomeIcon icon={faDiceD20} />
+				</TableCell>
 			</tr>
 		);
 	}
@@ -17,13 +27,7 @@ class GameList extends Component {
 		const gameRows = this.props.games.map(game => <GameRow key={game.id} game={game} />);
 		return (
 			<div>
-				<h2>This is issue table below</h2>
 				<table>
-					<thead>
-						<tr>
-							<th>Name</th>
-						</tr>
-					</thead>
 					<tbody>{gameRows}</tbody>
 				</table>
 			</div>
