@@ -20,6 +20,10 @@
 	},
 	"homepage": "https://github.com/pekac45/choose-next-game#readme",
 	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.8",
+		"@fortawesome/free-brands-svg-icons": "^5.5.0",
+		"@fortawesome/free-regular-svg-icons": "^5.5.0",
+		"@fortawesome/free-solid-svg-icons": "^5.5.0",
 		"express": "^4.17.1",
 		"next": "^8.1.0",
 		"react": "^16.8.6",
