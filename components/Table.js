@@ -2,11 +2,7 @@ import { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiceD20 } from "@fortawesome/free-solid-svg-icons";
 import { Grid, Cell } from "styled-css-grid";
-import styled from "styled-components";
-
-const TableCell = styled.td`
-	padding-right: 20px;
-`;
+import { TableCell } from "../styles/components";
 
 class GameRow extends Component {
 	render() {

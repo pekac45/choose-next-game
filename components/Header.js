@@ -1,33 +1,6 @@
 import Link from "next/link";
-import styled from "styled-components";
+import { HeaderWrapper, LinkWrapper } from "../styles/components";
 import { Grid, Cell } from "styled-css-grid";
-
-const HeaderWrapper = styled.div`
-	border-bottom: 3px solid #3d1f68;
-	width: 100vw;
-	height: 50px;
-`;
-
-const LinkWrapper = styled.button`
-	color: #3d1f68;
-	text-transform: uppercase;
-	font-family: "Dosis", sans-serif;
-	font-size: inherit;
-	background-color: transparent;
-	height: 100%;
-	cursor: pointer;
-
-	border: none;
-	text-align: center;
-	text-decoration: none;
-
-	transition: 0.3s;
-
-	:hover {
-		color: #efefef;
-		background-color: #3d1f68;
-	}
-`;
 
 const Header = () => (
 	<HeaderWrapper>
