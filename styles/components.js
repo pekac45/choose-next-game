@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -19,36 +19,70 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const HeaderWrapper = styled.div`
-	border-bottom: 3px solid var(--main-color);
-	width: 100vw;
-	height: 50px;
+  border-bottom: 3px solid var(--main-color);
+  width: 100vw;
+  height: 50px;
 `;
 
 export const LinkWrapper = styled.button`
-	color: var(--main-color);
-	text-transform: uppercase;
-	font-family: "Dosis", sans-serif;
-	font-size: inherit;
-	background-color: transparent;
-	height: 100%;
-	cursor: pointer;
+  color: var(--main-color);
+  text-transform: uppercase;
+  font-family: 'Dosis', sans-serif;
+  font-size: inherit;
+  background-color: transparent;
+  height: 100%;
+  cursor: pointer;
 
-	border: none;
-	text-align: center;
-	text-decoration: none;
+  border: none;
+  text-align: center;
+  text-decoration: none;
 
-	transition: 0.3s;
+  transition: 0.3s;
 
-	:hover {
-		color: var(--secondary-color);
-		background-color: var(--main-color);
-	}
+  :hover {
+    color: var(--secondary-color);
+    background-color: var(--main-color);
+  }
+`;
+
+export const Button = styled.button`
+  color: var(--main-color);
+  text-transform: uppercase;
+  font-family: 'Dosis', sans-serif;
+  font-size: inherit;
+  background-color: transparent;
+  height: 55px;
+  width: 107px;
+  cursor: pointer;
+
+  border: none;
+  text-align: center;
+  text-decoration: none;
+
+  transition: 0.3s;
+
+  :hover {
+    color: var(--secondary-color);
+    background-color: var(--main-color);
+  }
+`;
+
+export const InputWrapper = styled.input`
+  border: 2px #fff solid !important;
+  border: none;
+  border-radius: 0;
+  color: inherit;
+  outline: 0;
+  padding: 1rem;
+  text-decoration: none;
+  width: 30%;
+  font-size: 1rem;
 `;
 
 export const TableCell = styled.td`
-	padding-right: 20px;
+  padding-right: 20px;
 `;
 
 export const LayoutWrapper = styled.div`
-	color: var(--main-color);
+  color: var(--main-color);
 `;
