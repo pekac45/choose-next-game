@@ -1,5 +1,7 @@
-import { Component } from 'react';
-import { Grid, Cell } from 'styled-css-grid';
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-undef */
+import { React, Component } from 'react';
+import { Cell } from 'styled-css-grid';
 
 import Layout from '../components/Layout';
 import { Button, InputWrapper } from '../styles/components';
@@ -10,6 +12,7 @@ class Add extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   handleSubmit(e) {
     e.preventDefault();
     const form = document.forms.addGame;
