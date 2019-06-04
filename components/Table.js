@@ -1,15 +1,18 @@
+/* eslint-disable react/prop-types */
 import { Component } from 'react';
+import fetch from 'isomorphic-unfetch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiceD20 } from '@fortawesome/free-solid-svg-icons';
+// eslint-disable-next-line no-unused-vars
 import { Grid, Cell } from 'styled-css-grid';
 import { TableCell } from '../styles/components';
 
 class GameRow extends Component {
   render() {
-    const game = this.props.game;
+    const { game } = this.props;
     return (
       <tr>
-        <TableCell>{game.name}</TableCell>
+        <TableCell>{game}</TableCell>
         <TableCell>
           <FontAwesomeIcon icon={faDiceD20} />
         </TableCell>
@@ -25,21 +28,22 @@ class GameList extends Component {
   }
 
   componentDidMount() {
-    this.loadData();
-  }
-
-  loadData() {
-    setTimeout(() => {
-      this.setState({ games: this.props.games });
-    }, 2000);
+    fetch('http://jsonplaceholder.typicode.com/albums')
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        const games = data.map(game => <GameRow key={game.id} game={game.title} />).slice(0, 3);
+        this.setState({ games });
+      });
   }
 
   render() {
-    const gameRows = this.state.games.map(game => <GameRow key={game.id} game={game} />);
+    const { games } = this.state;
     return (
       <div>
         <table>
-          <tbody>{gameRows}</tbody>
+          <tbody>{games}</tbody>
         </table>
       </div>
     );

@@ -1,14 +1,29 @@
 {
-  "extends": ["airbnb", "prettier", "react-app", "plugin:prettier/recommended"],
-  "plugins": ["prettier"],
-  "rules": {
-    "jsx-a11y/href-no-hash": [0],
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx"]
-      }
+    "extends": [
+        "airbnb",
+        "prettier",
+        "react-app",
+        "plugin:prettier/recommended"
     ],
-    "no-console": "off"
-  }
+    "plugins": [
+        "prettier"
+    ],
+    "rules": {
+        "jsx-a11y/href-no-hash": [
+            0
+        ],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
+        "no-console": "off",
+        "react/react-in-jsx-scope": 0,
+        "react/prefer-stateless-function": 0,
+        "react/no-multi-comp": 0
+    }
 }
