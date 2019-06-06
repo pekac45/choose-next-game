@@ -1,5 +1,9 @@
-[
-  { "id": 1, "name": "Great Western Trail", "hotness": 100, "plays": 1 },
-  { "id": 2, "name": "Terraforming Mars", "hotness": 95, "plays": 3 },
-  { "id": 3, "name": "Spirit Island", "hotness": 97, "plays": 7 }
-]
+{
+  "games": [
+    { "id": 1, "name": "Great Western Trail", "hotness": 100, "plays": 0 },
+    { "id": 2, "name": "Terraforming Mars", "hotness": 95, "plays": 3 },
+    { "id": 3, "name": "Spirit Island", "hotness": 97, "plays": 7 },
+    { "id": 4, "name": "Cerebria", "hotness": 101, "plays": 0 },
+    { "id": 5, "name": "Root", "hotness": 80, "plays": 2 }
+  ]
+}
