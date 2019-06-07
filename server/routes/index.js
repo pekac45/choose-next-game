@@ -4,8 +4,9 @@ const router = express.Router();
 const Games = require('../models/gameModel');
 
 router.get('/', (req, res) => {
-  Games.find({}, (err, photos) => {
-    res.json(photos);
+  Games.find({}, (err, games) => {
+    res.json(games);
+    console.log(games);
   });
 });
 

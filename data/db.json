@@ -4,6 +4,9 @@
     { "id": 2, "name": "Terraforming Mars", "hotness": 95, "plays": 3 },
     { "id": 3, "name": "Spirit Island", "hotness": 97, "plays": 7 },
     { "id": 4, "name": "Cerebria", "hotness": 101, "plays": 0 },
-    { "id": 5, "name": "Root", "hotness": 80, "plays": 2 }
+    { "id": 5, "name": "Root", "hotness": 111, "plays": 2 },
+    { "id": 6, "name": "Twilight Struggle", "hotness": 111, "plays": 3 },
+    { "id": 7, "name": "King of Tokyo", "hotness": 40, "plays": 20 },
+    { "id": 8, "name": "Scythe", "hotness": 93, "plays": 6 }
   ]
 }

@@ -31,11 +31,13 @@ class GameList extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:4000/games')
+    fetch('http://localhost:3000/api/games')
       .then(results => {
+        console.log(results);
         return results.json();
       })
       .then(data => {
+        console.log(data);
         const rawGames = _.orderBy(data, ['hotness'], ['desc', 'asc']).slice(0, 3);
         const games = rawGames.map(game => <GameRow key={game.id} game={game.name} />);
         this.setState({ games });
