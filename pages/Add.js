@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-undef */
-import { React, Component } from 'react';
+import React, { Component } from 'react';
 import { Cell } from 'styled-css-grid';
 
 import Layout from '../components/Layout';
@@ -16,9 +16,10 @@ class Add extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const form = document.forms.addGame;
-    console.log(form.name.value);
+    const game = form.name.value;
+    console.log(game);
+
     form.name.value = '';
-    console.log(e);
   }
 
   render() {

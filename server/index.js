@@ -10,7 +10,9 @@ const handle = nextApp.getRequestHandler(); // part of next config
 const mongoose = require('mongoose');
 const routes = require('./routes/index');
 
-const db = mongoose.connect('mongodb://localhost:27017/Games');
+const db = mongoose
+  .connect('mongodb://localhost:27017/Games', { useNewUrlParser: true })
+  .then(console.log('Connection with DB established'));
 
 nextApp
   .prepare()

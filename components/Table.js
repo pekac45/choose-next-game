@@ -17,7 +17,9 @@ class GameRow extends Component {
       <tr>
         <TableCell>{game}</TableCell>
         <TableCell>
-          <FontAwesomeIcon icon={faDiceD20} />
+          <button>
+            <FontAwesomeIcon icon={faDiceD20} />
+          </button>
         </TableCell>
       </tr>
     );
@@ -33,11 +35,11 @@ class GameList extends Component {
   componentDidMount() {
     fetch('http://localhost:3000/api/games')
       .then(results => {
-        console.log(results);
+        // console.log(results);
         return results.json();
       })
       .then(data => {
-        console.log(data);
+        // console.log(data);
         const rawGames = _.orderBy(data, ['hotness'], ['desc', 'asc']).slice(0, 3);
         const games = rawGames.map(game => <GameRow key={game.id} game={game.name} />);
         this.setState({ games });
