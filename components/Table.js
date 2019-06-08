@@ -41,7 +41,7 @@ class GameList extends Component {
       .then(data => {
         // console.log(data);
         const rawGames = _.orderBy(data, ['hotness'], ['desc', 'asc']).slice(0, 3);
-        const games = rawGames.map(game => <GameRow key={game.id} game={game.name} />);
+        const games = rawGames.map(game => <GameRow key={game._id} game={game.name} />);
         this.setState({ games });
       });
   }

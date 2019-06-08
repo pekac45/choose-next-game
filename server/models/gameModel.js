@@ -3,10 +3,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const gameModel = new Schema({
-  id: { type: Number },
-  name: { type: String },
-  hottness: { type: Number },
-  plays: { type: Number }
+  name: String,
+  hottness: { type: Number, default: 100 },
+  plays: { type: Number, default: 0 }
 });
 
-module.exports = mongoose.model('games', gameModel);
+module.exports = mongoose.model('Game', gameModel);
