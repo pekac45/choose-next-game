@@ -25,6 +25,31 @@ nextApp
     app.get('*', (req, res) => {
       return handle(req, res); // for all the react stuff
     });
+
+    app.post('/api/games', (req, res) => {
+      const newGame = req.body;
+      newGame.hotness = 100;
+
+      // FIX TypeError: db.collection is not a function
+
+      db.collection('games')
+        .insertOne(newGame)
+        .then(result =>
+          db
+            .collection('games')
+            .find({ _id: result.instertedId })
+            .limit(1)
+            .next()
+        )
+        .then(newGame => {
+          res.json(newGame);
+        })
+        .catch(error => {
+          console.log(error);
+          res.status(500).json({ message: `Internal Server Error: ${error}` });
+        });
+    });
+
     app.listen(PORT, err => {
       if (err) throw err;
       console.log(`ready at http://localhost:${PORT}`);
