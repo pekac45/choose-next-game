@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable no-undef */
 import React, { Component } from 'react';
 import { Cell } from 'styled-css-grid';
 import fetch from 'isomorphic-unfetch';

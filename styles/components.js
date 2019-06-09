@@ -79,6 +79,23 @@ export const InputWrapper = styled.input`
   font-size: 1rem;
 `;
 
+export const SelectWrapper = styled.div``;
+
+export const Select = styled.select`
+  font-size: 1.2rem;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 400;
+  color: var(--main-color);
+  padding: 0.9rem 1.4rem 1rem 0.8rem;
+  width: 40%;
+  border: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none; /*Removes default style Firefox*/
+
+  background: url('./arrow-down.svg') no-repeat;
+`;
+
 export const TableCell = styled.td`
   padding-right: 20px;
 `;
