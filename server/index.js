@@ -32,8 +32,9 @@ nextApp
       const newGame = new Game(req.body);
       console.log(newGame.name);
 
-      newGame.save(function(err) {
+      newGame.save(err => {
         if (err) {
+          console.log(req);
           console.log(err);
         }
         // saved!

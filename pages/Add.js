@@ -2,6 +2,7 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react';
 import { Cell } from 'styled-css-grid';
+import fetch from 'isomorphic-unfetch';
 
 import Layout from '../components/Layout';
 import { Button, InputWrapper } from '../styles/components';
@@ -17,7 +18,14 @@ class Add extends Component {
     e.preventDefault();
     const form = document.forms.addGame;
     const game = form.name.value;
-    console.log(game);
+    const messageBody = JSON.stringify({ name: game });
+    fetch(`http://localhost:3000/api/games`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: messageBody
+    });
 
     form.name.value = '';
   }
@@ -26,7 +34,7 @@ class Add extends Component {
     return (
       <Layout>
         <Cell left={5} width={4} center>
-          <h2>This is the Add page.</h2>
+          <h2>Add new games.</h2>
         </Cell>
         <Cell left={4} width={6} center top={3}>
           <form name="addGame" onSubmit={this.handleSubmit}>
