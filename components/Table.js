@@ -17,7 +17,7 @@ class GameRow extends Component {
       <tr>
         <TableCell>{game}</TableCell>
         <TableCell>
-          <button>
+          <button type="submit">
             <FontAwesomeIcon icon={faDiceD20} />
           </button>
         </TableCell>

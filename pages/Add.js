@@ -11,7 +11,6 @@ class Add extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   handleSubmit(e) {
     e.preventDefault();
     const form = document.forms.addGame;

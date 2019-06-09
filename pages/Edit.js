@@ -30,7 +30,8 @@ class Edit extends Component {
           <h2>This is the Edit page.</h2>
         </Cell>
         <Cell left={4} width={6} center top={3}>
-          <SelectStyles options={this.state.games} />
+          {/* ClassNamePrefix is there to stop the error in React-Select */}
+          <SelectStyles classNamePrefix="fix" options={this.state.games} />
           <Button>Edit</Button>
         </Cell>
       </Layout>
