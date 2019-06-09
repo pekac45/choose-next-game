@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import Select from 'react-select';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -68,6 +67,28 @@ export const Button = styled.button`
   }
 `;
 
+export const DangerButton = styled.button`
+  color: var(--main-color);
+  text-transform: uppercase;
+  font-family: 'Dosis', sans-serif;
+  font-size: inherit;
+  background-color: transparent;
+  height: 3.43rem;
+  width: 6.68rem;
+  cursor: pointer;
+
+  border: none;
+  text-align: center;
+  text-decoration: none;
+
+  transition: 0.3s;
+
+  :hover {
+    color: var(--secondary-color);
+    background-color: #ff2323;
+  }
+`;
+
 export const InputWrapper = styled.input`
   border: 2px #fff solid !important;
   border: none;
@@ -80,7 +101,7 @@ export const InputWrapper = styled.input`
   font-size: 1rem;
 `;
 
-export const SelectStyles = styled(Select)`
+export const Select = styled.select`
   font-size: 1.2rem;
   font-family: 'Dosis', sans-serif;
   font-weight: 400;

@@ -1,15 +1,15 @@
 import { Cell } from 'styled-css-grid';
 import fetch from 'isomorphic-unfetch';
 import React, { Component } from 'react';
-import Select from 'react-select';
+// eslint-disable-next-line no-unused-vars
 
 import Layout from '../components/Layout';
-import { Button, SelectStyles } from '../styles/components';
+import { Button, Select, InputWrapper, DangerButton } from '../styles/components';
 
 class Edit extends Component {
   constructor() {
     super();
-    this.state = { games: [] };
+    this.state = { games: [], edit: true };
   }
 
   componentDidMount() {
@@ -18,7 +18,12 @@ class Edit extends Component {
         return results.json();
       })
       .then(data => {
-        const games = data.map(opt => ({ label: opt.name, value: opt._id }));
+        const games = data.map(opt => (
+          <option value={opt._id} key={opt._id}>
+            {opt.name}
+          </option>
+          // label: opt.name, value: opt._id
+        ));
         this.setState({ games });
       });
   }
@@ -30,9 +35,22 @@ class Edit extends Component {
           <h2>This is the Edit page.</h2>
         </Cell>
         <Cell left={4} width={6} center top={3}>
-          {/* ClassNamePrefix is there to stop the error in React-Select */}
-          <SelectStyles classNamePrefix="fix" options={this.state.games} />
-          <Button>Edit</Button>
+          <Select>{this.state.games}</Select>
+          <Button>Add Play</Button>
+          <Button>Remove Play</Button>
+        </Cell>
+        <Cell left={4} width={6} center top={4}>
+          {this.state.edit ? (
+            <div>
+              <form onSubmit={this.handleSubmit}>
+                <InputWrapper type="text" value={this.state.value} onChange={this.handleChange} />
+                <Button type="submit" value="Submit">
+                  Change name
+                </Button>
+                <DangerButton>Delete Game</DangerButton>
+              </form>
+            </div>
+          ) : null}
         </Cell>
       </Layout>
     );
