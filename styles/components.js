@@ -97,7 +97,7 @@ export const InputWrapper = styled.input`
   outline: 0;
   padding: 1rem;
   text-decoration: none;
-  width: 30%;
+  width: 40%;
   font-size: 1rem;
 `;
 
@@ -107,10 +107,16 @@ export const Select = styled.select`
   font-weight: 400;
   color: var(--main-color);
   padding: 0.8rem 1.4rem 1.05rem 0.8rem;
-  width: 40%;
+  width: 46%;
   border: none;
-  border-radius: 0;
+  border-radius: 0 !important;
   display: inline-block;
+  background-color: #ffffff;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -ms-appearance: none;
 `;
 
 export const TableCell = styled.td`

@@ -43,7 +43,12 @@ class Edit extends Component {
           {this.state.edit ? (
             <div>
               <form onSubmit={this.handleSubmit}>
-                <InputWrapper type="text" value={this.state.value} onChange={this.handleChange} />
+                <InputWrapper
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                  style={{ borderTop: '1px solid #3d1f68 !important' }}
+                />
                 <Button type="submit" value="Submit">
                   Change name
                 </Button>
