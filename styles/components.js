@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import Select from 'react-select';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -51,8 +52,8 @@ export const Button = styled.button`
   font-family: 'Dosis', sans-serif;
   font-size: inherit;
   background-color: transparent;
-  height: 55px;
-  width: 107px;
+  height: 3.43rem;
+  width: 6.68rem;
   cursor: pointer;
 
   border: none;
@@ -79,21 +80,16 @@ export const InputWrapper = styled.input`
   font-size: 1rem;
 `;
 
-export const SelectWrapper = styled.div``;
-
-export const Select = styled.select`
+export const SelectStyles = styled(Select)`
   font-size: 1.2rem;
   font-family: 'Dosis', sans-serif;
   font-weight: 400;
   color: var(--main-color);
-  padding: 0.9rem 1.4rem 1rem 0.8rem;
+  padding: 0.8rem 1.4rem 1.05rem 0.8rem;
   width: 40%;
   border: none;
   border-radius: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none; /*Removes default style Firefox*/
-
-  background: url('./arrow-down.svg') no-repeat;
+  display: inline-block;
 `;
 
 export const TableCell = styled.td`

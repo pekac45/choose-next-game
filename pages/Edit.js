@@ -1,11 +1,28 @@
 import { Cell } from 'styled-css-grid';
 import fetch from 'isomorphic-unfetch';
 import React, { Component } from 'react';
+import Select from 'react-select';
 
 import Layout from '../components/Layout';
-import { Button, Select, SelectWrapper } from '../styles/components';
+import { Button, SelectStyles } from '../styles/components';
 
 class Edit extends Component {
+  constructor() {
+    super();
+    this.state = { games: [] };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/api/games')
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        const games = data.map(opt => ({ label: opt.name, value: opt._id }));
+        this.setState({ games });
+      });
+  }
+
   render() {
     return (
       <Layout>
@@ -13,13 +30,7 @@ class Edit extends Component {
           <h2>This is the Edit page.</h2>
         </Cell>
         <Cell left={4} width={6} center top={3}>
-          <SelectWrapper>
-            <Select>
-              <option value="Terraforming Mars">Terraforming Mars</option>
-              <option value="Twilight Struggle">Twilight Struggle</option>
-              <option value="Root">Root</option>
-            </Select>
-          </SelectWrapper>
+          <SelectStyles options={this.state.games} />
           <Button>Edit</Button>
         </Cell>
       </Layout>
