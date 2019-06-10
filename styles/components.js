@@ -87,6 +87,7 @@ export const Select = styled.select`
   padding: 0.8rem 1.4rem 1.05rem 0.8rem;
   width: 46%;
   border: none;
+  border-bottom: 1px solid var(--main-color);
   border-radius: 0 !important;
   display: inline-block;
   background-color: #ffffff;
