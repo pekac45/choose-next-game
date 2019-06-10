@@ -63,29 +63,7 @@ export const Button = styled.button`
 
   :hover {
     color: var(--secondary-color);
-    background-color: var(--main-color);
-  }
-`;
-
-export const DangerButton = styled.button`
-  color: var(--main-color);
-  text-transform: uppercase;
-  font-family: 'Dosis', sans-serif;
-  font-size: inherit;
-  background-color: transparent;
-  height: 3.43rem;
-  width: 6.68rem;
-  cursor: pointer;
-
-  border: none;
-  text-align: center;
-  text-decoration: none;
-
-  transition: 0.3s;
-
-  :hover {
-    color: var(--secondary-color);
-    background-color: #ff2323;
+    background-color: ${props => (props.danger ? '#ff2323' : 'var(--main-color)')};
   }
 `;
 

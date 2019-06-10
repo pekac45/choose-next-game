@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // eslint-disable-next-line no-unused-vars
 
 import Layout from '../components/Layout';
-import { Button, Select, InputWrapper, DangerButton } from '../styles/components';
+import { Button, Select, InputWrapper } from '../styles/components';
 
 class Edit extends Component {
   constructor() {
@@ -52,7 +52,7 @@ class Edit extends Component {
                 <Button type="submit" value="Submit">
                   Change name
                 </Button>
-                <DangerButton>Delete Game</DangerButton>
+                <Button danger>Delete Game</Button>
               </form>
             </div>
           ) : null}
