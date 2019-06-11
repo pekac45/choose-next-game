@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const gameModel = new Schema({
   name: String,
-  hottness: { type: Number, default: 100 },
+  hotValue: { type: Number },
   plays: { type: Number, default: 0 }
 });
 
