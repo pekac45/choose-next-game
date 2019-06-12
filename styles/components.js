@@ -68,15 +68,16 @@ export const Button = styled.button`
 `;
 
 export const InputWrapper = styled.input`
-  border: 2px #fff solid !important;
   border: none;
+  border-top: ${props => (props.borderTop ? '1px solid var(--main-color)' : 'none')};
   border-radius: 0;
   color: inherit;
-  outline: 0;
+  /* outline: 0; */
   padding: 1rem;
   text-decoration: none;
-  width: 40%;
-  font-size: 1rem;
+  width: 20vw;
+  font-size: 1.2rem;
+  font-weight: 400;
 `;
 
 export const Select = styled.select`
@@ -84,10 +85,11 @@ export const Select = styled.select`
   font-family: 'Dosis', sans-serif;
   font-weight: 400;
   color: var(--main-color);
-  padding: 0.8rem 1.4rem 1.05rem 0.8rem;
-  width: 46%;
+  /* padding: 0.8rem 1.4rem 1.05rem 0.8rem; */
+  padding: 1rem;
+  /* width: 20vw; */
+  width: calc(32px + 20vw);
   border: none;
-  border-bottom: 1px solid var(--main-color);
   border-radius: 0 !important;
   display: inline-block;
   background-color: #ffffff;

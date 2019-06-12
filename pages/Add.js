@@ -27,6 +27,7 @@ class Add extends Component {
           if (data.length === 0) {
             hotValue = 100;
           } else {
+            // eslint-disable-next-line prefer-destructuring
             hotValue = _.orderBy(data, ['hotValue'], ['desc', 'asc'])[0].hotValue;
           }
         };

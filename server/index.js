@@ -28,10 +28,7 @@ nextApp
     });
 
     app.post('/api/games', (req, res) => {
-      console.log(req.body);
       const newGame = new Game(req.body);
-      console.log(newGame.name);
-
       newGame.save(err => {
         if (err) {
           console.log(req);
@@ -39,6 +36,20 @@ nextApp
         }
         // saved!
         res.json();
+      });
+    });
+
+    app.delete('/api/games/:id', (req, res) => {
+      console.log(req.params.id);
+
+      // Game.findByIdAndRemove(req.body);
+
+      // res.status(200);
+      Game.findByIdAndRemove({ _id: req.params.id }, (err, result) => {
+        if (err) {
+          throw err;
+        }
+        res.send(result);
       });
     });
 
