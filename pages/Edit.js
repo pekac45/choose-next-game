@@ -1,15 +1,18 @@
 import { Cell } from 'styled-css-grid';
 import fetch from 'isomorphic-unfetch';
 import React, { Component } from 'react';
+import ReactSelect from 'react-select';
 // eslint-disable-next-line no-unused-vars
 
 import Layout from '../components/Layout';
 import { Button, Select, InputWrapper } from '../styles/components';
 
+const _ = require('lodash');
+
 class Edit extends Component {
   constructor() {
     super();
-    this.state = { games: [], value: '', name: '' };
+    this.state = { selectedOption: '' };
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
@@ -21,34 +24,44 @@ class Edit extends Component {
         return results.json();
       })
       .then(data => {
-        const games = data.map(opt => (
-          <option value={opt._id} key={opt._id} name={opt.name}>
-            {opt.name}
-          </option>
-          // label: opt.name, value: opt._id
-        ));
-        this.setState({ games });
+        const options = data.map(opt => {
+          const rawGames = {};
+          rawGames.key = opt._id;
+          rawGames.value = opt._id;
+          rawGames.label = opt.name;
+          return rawGames;
+        });
+        this.setState({ options });
       });
   }
 
+  handleSelectChange = selectedOption => {
+    this.setState({ selectedOption });
+  };
+
   handleDelete(e) {
-    // e.preventDefault();
-    fetch(`http://localhost:3000/api/games/${this.state.value}`, {
+    e.preventDefault();
+    fetch(`http://localhost:3000/api/games/${this.state.selectedOption.value}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       }
     });
+    // Remove array from options
+    _.pull(this.state.options, this.state.selectedOption);
+    this.setState({ selectedOption: '' });
   }
 
-  handleInputChange() {}
-
-  handleSelectChange(e) {
-    this.setState({ value: e.target.value });
-    console.log(e.target.value);
+  handleNameChange(e) {
+    e.preventDefault();
+    console.log('Change name pressed');
   }
+
+  handleInputChange(e) {}
 
   render() {
+    const { selectedOption } = this.state;
+    const { options } = this.state;
     return (
       <Layout>
         <Cell left={5} width={4} center>
@@ -56,9 +69,11 @@ class Edit extends Component {
           <h2 style={{ color: '#ff2323' }}>NONE OF THIS IS WORKING YET</h2>
         </Cell>
         <Cell left={4} width={6} center top={3}>
-          <Select value={this.state.value} onChange={this.handleSelectChange}>
-            {this.state.games}
-          </Select>
+          <ReactSelect
+            value={selectedOption}
+            onChange={this.handleSelectChange}
+            options={options}
+          />
           <Button>Add Play</Button>
           <Button>Remove Play</Button>
         </Cell>
@@ -67,11 +82,11 @@ class Edit extends Component {
             <form onSubmit={this.handleSubmit}>
               <InputWrapper
                 type="text"
-                value={this.state.value}
+                placeholder={selectedOption.label}
                 onChange={this.handleInputChange}
                 borderTop
               />
-              <Button type="submit" value="Submit">
+              <Button type="submit" value="Submit" onClick={this.handleNameChange}>
                 Change name
               </Button>
               <Button danger onClick={this.handleDelete}>
