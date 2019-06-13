@@ -13,8 +13,13 @@ const _ = require('lodash');
 class GameRow extends Component {
   handlePlay = e => {
     e.preventDefault();
-    console.log('clicked handle play:');
-    console.log(this.props.id);
+
+    fetch(`http://localhost:3000/api/games/${this.props.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
   };
 
   render() {
