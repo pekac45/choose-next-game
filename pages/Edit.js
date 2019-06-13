@@ -9,8 +9,9 @@ import { Button, Select, InputWrapper } from '../styles/components';
 class Edit extends Component {
   constructor() {
     super();
-    this.state = { games: [], value: '' };
+    this.state = { games: [], value: '', name: '' };
 
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
   }
 
@@ -21,7 +22,7 @@ class Edit extends Component {
       })
       .then(data => {
         const games = data.map(opt => (
-          <option value={opt._id} key={opt._id}>
+          <option value={opt._id} key={opt._id} name={opt.name}>
             {opt.name}
           </option>
           // label: opt.name, value: opt._id
@@ -31,14 +32,20 @@ class Edit extends Component {
   }
 
   handleDelete(e) {
-    e.preventDefault();
-    console.log('delete pressed');
+    // e.preventDefault();
+    fetch(`http://localhost:3000/api/games/${this.state.value}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
   }
 
   handleInputChange() {}
 
   handleSelectChange(e) {
     this.setState({ value: e.target.value });
+    console.log(e.target.value);
   }
 
   render() {
