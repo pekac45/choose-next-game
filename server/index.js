@@ -39,23 +39,6 @@ nextApp
       });
     });
 
-    // app.delete('/api/games/:id', (req, res) => {
-    //   Game.findByIdAndRemove({ _id: req.params.id }, (err, result) => {
-    //     if (err) {
-    //       res.json({
-    //         error: err
-    //       });
-    //     }
-    //     console.log(result);
-    //     const response = {
-    //       message: 'Game successfully deleted',
-    //       id: result._id,
-    //       name: result.name
-    //     };
-    //     return res.status(200).send(response);
-    //   });
-    // });
-
     app.delete('/api/games/:id', (req, res) => {
       Game.findByIdAndRemove({ _id: req.params.id })
         .then(() => {
