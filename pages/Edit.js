@@ -2,9 +2,10 @@ import { Cell } from 'styled-css-grid';
 import fetch from 'isomorphic-unfetch';
 import React, { Component } from 'react';
 import ReactSelect from 'react-select';
-// eslint-disable-next-line no-unused-vars
 
 import Layout from '../components/Layout';
+
+// eslint-disable-next-line no-unused-vars
 import { Button, Select, InputWrapper } from '../styles/components';
 
 const _ = require('lodash');
@@ -66,7 +67,7 @@ class Edit extends Component {
       <Layout>
         <Cell left={5} width={4} center>
           <h2>This is the Edit page</h2>
-          <h2 style={{ color: '#ff2323' }}>NONE OF THIS IS WORKING YET</h2>
+          <h2 style={{ color: '#ff2323' }}>ONLY DELETE GAME IS WORKING RIGHT NOW</h2>
         </Cell>
         <Cell left={4} width={6} center top={3}>
           <ReactSelect

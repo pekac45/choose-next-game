@@ -25,7 +25,7 @@ class Add extends Component {
         // Make sure it works if there are no games in DB
         let hotValue = () => {
           if (data.length === 0) {
-            hotValue = 100;
+            hotValue = 10000;
           } else {
             // eslint-disable-next-line prefer-destructuring
             hotValue = _.orderBy(data, ['hotValue'], ['desc', 'asc'])[0].hotValue;

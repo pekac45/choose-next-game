@@ -39,6 +39,28 @@ nextApp
       });
     });
 
+    app.put('/api/games/:id', (req, res) => {
+      const { id } = req.params;
+      Game.findById(id, (err, response) => {
+        const newHotValue = response.hotValue - 3;
+        const newPlays = response.plays + 1;
+        Game.findByIdAndUpdate(id, { $set: { hotValue: newHotValue, plays: newPlays } }, error => {
+          if (error) {
+            console.log(error);
+          }
+          res.send('Updated');
+        });
+      });
+
+      // Game.findByIdAndUpdate(req.params.id, { $set: { hotValue: 100 } }, err => {
+
+      //   if (err) {
+      //     console.log(err);
+      //   }
+      //   res.send('Done');
+      // });
+    });
+
     app.delete('/api/games/:id', (req, res) => {
       Game.findByIdAndRemove({ _id: req.params.id })
         .then(() => {
