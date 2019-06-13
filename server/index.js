@@ -12,7 +12,7 @@ const routes = require('./routes/index');
 const Game = require('./models/gameModel');
 
 const db = mongoose
-  .connect('mongodb://localhost:27017/Games', { useNewUrlParser: true })
+  .connect('mongodb://localhost:27017/Games', { useNewUrlParser: true, useFindAndModify: false })
   .then(console.log('Connection with DB established'));
 
 nextApp
@@ -39,18 +39,37 @@ nextApp
       });
     });
 
+    // app.delete('/api/games/:id', (req, res) => {
+    //   Game.findByIdAndRemove({ _id: req.params.id }, (err, result) => {
+    //     if (err) {
+    //       res.json({
+    //         error: err
+    //       });
+    //     }
+    //     console.log(result);
+    //     const response = {
+    //       message: 'Game successfully deleted',
+    //       id: result._id,
+    //       name: result.name
+    //     };
+    //     return res.status(200).send(response);
+    //   });
+    // });
+
     app.delete('/api/games/:id', (req, res) => {
-      console.log(req.params.id);
-
-      // Game.findByIdAndRemove(req.body);
-
-      // res.status(200);
-      Game.findByIdAndRemove({ _id: req.params.id }, (err, result) => {
-        if (err) {
-          throw err;
-        }
-        res.send(result);
-      });
+      Game.findByIdAndRemove({ _id: req.params.id })
+        .then(() => {
+          res.status(200).json({
+            message: 'Deleted!',
+            id: res._id,
+            name: res.name
+          });
+        })
+        .catch(error => {
+          res.status(400).json({
+            error
+          });
+        });
     });
 
     app.listen(PORT, err => {
