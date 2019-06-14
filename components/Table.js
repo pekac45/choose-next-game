@@ -3,6 +3,7 @@ import fetch from 'isomorphic-unfetch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiceD20 } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
+import { confirmAlert } from 'react-confirm-alert';
 
 // eslint-disable-next-line no-unused-vars
 import { Grid, Cell } from 'styled-css-grid';
@@ -13,12 +14,29 @@ const _ = require('lodash');
 class GameRow extends Component {
   handlePlay = e => {
     e.preventDefault();
-
-    fetch(`http://localhost:3000/api/games/${this.props.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    confirmAlert({
+      title: 'Log Play',
+      message: 'Log Play',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => {
+            console.log('pressed yes');
+            fetch(`http://localhost:3000/api/games/${this.props.id}`, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+          }
+        },
+        {
+          label: 'No',
+          onClick: () => {
+            console.log('pressed no');
+          }
+        }
+      ]
     });
   };
 
