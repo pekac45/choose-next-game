@@ -1,4 +1,5 @@
-import { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
+
 import fetch from 'isomorphic-unfetch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiceD20 } from '@fortawesome/free-solid-svg-icons';
@@ -60,35 +61,40 @@ GameRow.propTypes = {
   game: PropTypes.string
 };
 
-class GameList extends Component {
-  constructor() {
-    super();
-    this.state = { games: [] };
-  }
+function GameList() {
+  const [games, setGames] = useState(0);
 
-  componentDidMount() {
-    fetch('http://localhost:3000/api/games')
+  useEffect(() => {
+    const abortController = new AbortController();
+    const { signal } = abortController;
+
+    fetch('http://localhost:3000/api/games', { signal })
       .then(results => {
+        console.log('fetching');
+
         return results.json();
       })
       .then(data => {
         const rawGames = _.orderBy(data, ['hotValue'], ['desc', 'asc']).slice(0, 3);
-        const games = rawGames.map(game => (
+        const parsedGames = rawGames.map(game => (
           <GameRow key={game._id} game={game.name} id={game._id} />
         ));
-        this.setState({ games });
+        setGames(parsedGames);
+        console.log('fetched ', parsedGames);
       });
-  }
 
-  render() {
-    const { games } = this.state;
-    return (
-      <div>
-        <table>
-          <tbody>{games}</tbody>
-        </table>
-      </div>
-    );
-  }
+    return function cleanup() {
+      abortController.abort();
+    };
+  }, []);
+
+  return (
+    <div>
+      <table>
+        <tbody>{games}</tbody>
+      </table>
+    </div>
+  );
 }
+
 export default GameList;
