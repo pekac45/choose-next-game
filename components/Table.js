@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useCallback } from 'react';
+import React, { Component } from 'react';
 
 import fetch from 'isomorphic-unfetch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -62,17 +62,24 @@ GameRow.propTypes = {
   game: PropTypes.string
 };
 
-// CONFIRMATION BUTTON
-// document.getElementsByClassName('react-confirm-alert-button-group')[0].children[0];
+class GameList extends Component {
+  constructor() {
+    super();
+    this.state = { games: '' };
+  }
 
-function GameList() {
-  const [games, setGames] = useState(0);
+  componentDidMount() {
+    this.handleGames();
+  }
 
-  const handleClick = useCallback(() => {
-    const abortController = new AbortController();
-    const { signal } = abortController;
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state === prevState) {
+      this.handleGames();
+    }
+  }
 
-    fetch('http://localhost:3000/api/games', { signal })
+  handleGames() {
+    fetch('http://localhost:3000/api/games')
       .then(results => {
         console.log('fetching');
 
@@ -83,48 +90,22 @@ function GameList() {
         const parsedGames = rawGames.map(game => (
           <GameRow key={game._id} game={game.name} id={game._id} />
         ));
-        setGames(parsedGames);
+
+        this.setState({ games: parsedGames });
         console.log('fetched ', parsedGames);
       });
+  }
 
-    return function cleanup() {
-      abortController.abort();
-    };
-  }, []);
-
-  useEffect(() => {
-    handleClick();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [handleClick]);
-
-  // useEffect(() => {
-  // const abortController = new AbortController();
-  // const { signal } = abortController;
-  // fetch('http://localhost:3000/api/games', { signal })
-  //   .then(results => {
-  //     console.log('fetching');
-  //     return results.json();
-  //   })
-  //   .then(data => {
-  //     const rawGames = _.orderBy(data, ['hotValue'], ['desc', 'asc']).slice(0, 3);
-  //     const parsedGames = rawGames.map(game => (
-  //       <GameRow key={game._id} game={game.name} id={game._id} />
-  //     ));
-  //     setGames(parsedGames);
-  //     console.log('fetched ', parsedGames);
-  //   });
-  // return function cleanup() {
-  //   abortController.abort();
-  // };
-  // }, []);
-
-  return (
-    <div>
-      <table>
-        <tbody>{games}</tbody>
-      </table>
-    </div>
-  );
+  render() {
+    const { games } = this.state;
+    return (
+      <div>
+        <table>
+          <tbody>{games}</tbody>
+        </table>
+      </div>
+    );
+  }
 }
 
 export default GameList;
