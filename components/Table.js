@@ -40,6 +40,7 @@ class GameRow extends Component {
         }
       ]
     });
+    this.props.propsFromParent();
   };
 
   render() {
@@ -59,13 +60,15 @@ class GameRow extends Component {
 
 GameRow.propTypes = {
   id: PropTypes.string,
-  game: PropTypes.string
+  game: PropTypes.string,
+  // eslint-disable-next-line react/no-typos
+  propsFromParent: PropTypes.function
 };
 
 class GameList extends Component {
   constructor() {
     super();
-    this.state = { games: '' };
+    this.state = { games: '', counter: 0 };
   }
 
   componentDidMount() {
@@ -73,7 +76,7 @@ class GameList extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state === prevState) {
+    if (this.state.counter !== prevState.counter) {
       this.handleGames();
     }
   }
@@ -86,9 +89,18 @@ class GameList extends Component {
         return results.json();
       })
       .then(data => {
+        const { counter } = this.state;
         const rawGames = _.orderBy(data, ['hotValue'], ['desc', 'asc']).slice(0, 3);
         const parsedGames = rawGames.map(game => (
-          <GameRow key={game._id} game={game.name} id={game._id} />
+          <GameRow
+            key={game._id}
+            game={game.name}
+            id={game._id}
+            propsFromParent={() => {
+              this.setState({ counter: counter + 1 });
+              console.log(counter);
+            }}
+          />
         ));
 
         this.setState({ games: parsedGames });
