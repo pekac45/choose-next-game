@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect, useCallback } from 'react';
 
 import fetch from 'isomorphic-unfetch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,8 +21,9 @@ class GameRow extends Component {
       buttons: [
         {
           label: 'Yes',
+          id: 'confirmButton',
           onClick: () => {
-            console.log('pressed yes');
+            console.log('pressed yes on', this.props.game);
             fetch(`http://localhost:3000/api/games/${this.props.id}`, {
               method: 'PUT',
               headers: {
@@ -34,7 +35,7 @@ class GameRow extends Component {
         {
           label: 'No',
           onClick: () => {
-            console.log('pressed no');
+            console.log('pressed no on', this.props.game);
           }
         }
       ]
@@ -61,10 +62,13 @@ GameRow.propTypes = {
   game: PropTypes.string
 };
 
+// CONFIRMATION BUTTON
+// document.getElementsByClassName('react-confirm-alert-button-group')[0].children[0];
+
 function GameList() {
   const [games, setGames] = useState(0);
 
-  useEffect(() => {
+  const handleClick = useCallback(() => {
     const abortController = new AbortController();
     const { signal } = abortController;
 
@@ -87,6 +91,32 @@ function GameList() {
       abortController.abort();
     };
   }, []);
+
+  useEffect(() => {
+    handleClick();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handleClick]);
+
+  // useEffect(() => {
+  // const abortController = new AbortController();
+  // const { signal } = abortController;
+  // fetch('http://localhost:3000/api/games', { signal })
+  //   .then(results => {
+  //     console.log('fetching');
+  //     return results.json();
+  //   })
+  //   .then(data => {
+  //     const rawGames = _.orderBy(data, ['hotValue'], ['desc', 'asc']).slice(0, 3);
+  //     const parsedGames = rawGames.map(game => (
+  //       <GameRow key={game._id} game={game.name} id={game._id} />
+  //     ));
+  //     setGames(parsedGames);
+  //     console.log('fetched ', parsedGames);
+  //   });
+  // return function cleanup() {
+  //   abortController.abort();
+  // };
+  // }, []);
 
   return (
     <div>
