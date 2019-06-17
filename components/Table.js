@@ -13,6 +13,11 @@ import { TableCell } from '../styles/components';
 const _ = require('lodash');
 
 class GameRow extends Component {
+  constructor(props) {
+    super(props);
+    this.handlePlay = this.handlePlay.bind(this);
+  }
+
   handlePlay = e => {
     e.preventDefault();
     confirmAlert({
@@ -89,7 +94,7 @@ class GameList extends Component {
       })
       .then(data => {
         const { counter } = this.state;
-        const rawGames = _.orderBy(data, ['hotValue'], ['desc', 'asc']).slice(0, 3);
+        const rawGames = _.orderBy(data, ['hotValue'], ['desc', 'asc']);
         const parsedGames = rawGames.map(game => (
           <GameRow
             key={game._id}
