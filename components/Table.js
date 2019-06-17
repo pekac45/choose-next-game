@@ -94,7 +94,7 @@ class GameList extends Component {
       })
       .then(data => {
         const { counter } = this.state;
-        const rawGames = _.orderBy(data, ['hotValue'], ['desc', 'asc']);
+        const rawGames = _.orderBy(data, ['hotValue'], ['desc', 'asc']).slice(0, 3);
         const parsedGames = rawGames.map(game => (
           <GameRow
             key={game._id}
