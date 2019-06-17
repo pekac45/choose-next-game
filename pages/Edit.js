@@ -1,12 +1,12 @@
 import { Cell } from 'styled-css-grid';
 import fetch from 'isomorphic-unfetch';
 import React, { Component } from 'react';
-import ReactSelect from 'react-select';
+import '../styles/select.css';
 
 import Layout from '../components/Layout';
 
 // eslint-disable-next-line no-unused-vars
-import { Button, Select, InputWrapper } from '../styles/components';
+import { Button, InputWrapper, ReactSelectWrapper, FormGroupWrapper } from '../styles/components';
 
 const _ = require('lodash');
 
@@ -58,8 +58,6 @@ class Edit extends Component {
     console.log('Change name pressed');
   }
 
-  handleInputChange(e) {}
-
   render() {
     const { selectedOption } = this.state;
     const { options } = this.state;
@@ -70,31 +68,32 @@ class Edit extends Component {
           <h2 style={{ color: '#ff2323' }}>ONLY DELETE GAME IS WORKING RIGHT NOW</h2>
         </Cell>
         <Cell left={4} width={6} center top={3}>
-          <ReactSelect
+          <ReactSelectWrapper
             value={selectedOption}
             onChange={this.handleSelectChange}
             options={options}
+            placeholder="Select Game"
+            classNamePrefix="react-select"
           />
+
           <Button>Add Play</Button>
           <Button>Remove Play</Button>
         </Cell>
         <Cell left={4} width={6} center top={4}>
-          <div>
-            <form onSubmit={this.handleSubmit}>
-              <InputWrapper
-                type="text"
-                placeholder={selectedOption.label}
-                onChange={this.handleInputChange}
-                borderTop
-              />
-              <Button type="submit" value="Submit" onClick={this.handleNameChange}>
-                Change name
-              </Button>
-              <Button danger onClick={this.handleDelete}>
-                Delete Game
-              </Button>
-            </form>
-          </div>
+          <FormGroupWrapper onSubmit={this.handleSubmit}>
+            <InputWrapper
+              type="text"
+              placeholder={selectedOption.label}
+              onChange={this.handleInputChange}
+              borderTop
+            />
+            <Button padding type="submit" value="Submit" onClick={this.handleNameChange}>
+              Change name
+            </Button>
+            <Button padding danger onClick={this.handleDelete}>
+              Delete Game
+            </Button>
+          </FormGroupWrapper>
         </Cell>
       </Layout>
     );

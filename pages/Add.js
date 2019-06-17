@@ -3,7 +3,7 @@ import { Cell } from 'styled-css-grid';
 import fetch from 'isomorphic-unfetch';
 
 import Layout from '../components/Layout';
-import { Button, InputWrapper } from '../styles/components';
+import { Button, InputWrapper, FormGroupWrapper } from '../styles/components';
 
 const _ = require('lodash');
 
@@ -59,10 +59,10 @@ class Add extends Component {
           <h2>Add new games</h2>
         </Cell>
         <Cell left={4} width={6} center top={3}>
-          <form name="addGame" onSubmit={this.handleSubmit}>
+          <FormGroupWrapper name="addGame" onSubmit={this.handleSubmit}>
             <InputWrapper type="text" name="name" placeholder="Name" />
             <Button className="btn">Add Game</Button>
-          </form>
+          </FormGroupWrapper>
         </Cell>
       </Layout>
     );

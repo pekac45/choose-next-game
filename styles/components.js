@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import Select from 'react-select';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -46,12 +47,17 @@ export const LinkWrapper = styled.button`
 `;
 
 export const Button = styled.button`
+  display: inline-block;
+
   color: var(--main-color);
   text-transform: uppercase;
   font-family: 'Dosis', sans-serif;
   font-size: inherit;
   background-color: transparent;
-  height: 3.43rem;
+  padding: 0;
+  height: 100%;
+  min-height: 100%;
+  /* min-height: 3.44rem; */
   width: 6.68rem;
   cursor: pointer;
 
@@ -60,6 +66,7 @@ export const Button = styled.button`
   text-decoration: none;
 
   transition: 0.3s;
+  padding-top: ${props => (props.padding ? '3px' : '2px')};
 
   :hover {
     color: var(--secondary-color);
@@ -67,8 +74,18 @@ export const Button = styled.button`
   }
 `;
 
+export const FormGroupWrapper = styled.form`
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
+  /* outline: 1px solid red; */
+`;
+
 export const InputWrapper = styled.input`
+  display: inline-block;
+
   border: none;
+  margin-top: 0;
   border-top: ${props => (props.borderTop ? '1px solid var(--main-color)' : 'none')};
   border-radius: 0;
   color: inherit;
@@ -76,28 +93,20 @@ export const InputWrapper = styled.input`
   padding: 1rem;
   text-decoration: none;
   width: 20vw;
-  font-size: 1.2rem;
-  font-weight: 400;
-`;
+  /* height: 3.44rem; */
 
-export const Select = styled.select`
   font-size: 1.2rem;
   font-family: 'Dosis', sans-serif;
   font-weight: 400;
+`;
+
+export const ReactSelectWrapper = styled(Select)`
+  font-size: 1.2rem;
   color: var(--main-color);
-  /* padding: 0.8rem 1.4rem 1.05rem 0.8rem; */
-  padding: 1rem;
-  /* width: 20vw; */
   width: calc(32px + 20vw);
-  border: none;
-  border-radius: 0 !important;
   display: inline-block;
   background-color: #ffffff;
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -ms-appearance: none;
+  border: null;
 `;
 
 export const TableCell = styled.td`
