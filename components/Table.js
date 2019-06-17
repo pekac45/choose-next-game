@@ -29,7 +29,7 @@ class GameRow extends Component {
               headers: {
                 'Content-Type': 'application/json'
               }
-            });
+            }).then(this.props.propsFromParent());
           }
         },
         {
@@ -40,7 +40,6 @@ class GameRow extends Component {
         }
       ]
     });
-    this.props.propsFromParent();
   };
 
   render() {
