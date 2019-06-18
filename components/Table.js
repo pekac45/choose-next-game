@@ -6,9 +6,8 @@ import { faDiceD20 } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import { confirmAlert } from 'react-confirm-alert';
 
-// eslint-disable-next-line no-unused-vars
-import { Grid, Cell } from 'styled-css-grid';
 import { TableCell, Button } from '../styles/components';
+import '../styles/confirm.css';
 
 const _ = require('lodash');
 
@@ -23,6 +22,9 @@ class GameRow extends Component {
     confirmAlert({
       title: 'Log Play',
       message: 'Log Play',
+      closeOnEscape: true,
+      closeOnClickOutside: true,
+      onClickOutside: () => {},
       buttons: [
         {
           label: 'Yes',
