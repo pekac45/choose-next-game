@@ -58,7 +58,9 @@ export const Button = styled.button`
   height: 100%;
   min-height: 100%;
   /* min-height: 3.44rem; */
-  width: 6.68rem;
+  width: ${props => (props.square ? '2rem' : '6.68rem;')};
+  height: ${props => (props.square ? '2rem' : '100%')};
+
   cursor: pointer;
 
   border: none;

@@ -8,7 +8,7 @@ import { confirmAlert } from 'react-confirm-alert';
 
 // eslint-disable-next-line no-unused-vars
 import { Grid, Cell } from 'styled-css-grid';
-import { TableCell } from '../styles/components';
+import { TableCell, Button } from '../styles/components';
 
 const _ = require('lodash');
 
@@ -53,9 +53,9 @@ class GameRow extends Component {
       <tr>
         <TableCell>{game}</TableCell>
         <TableCell>
-          <button type="submit">
-            <FontAwesomeIcon icon={faDiceD20} onClick={this.handlePlay} />
-          </button>
+          <Button square type="submit" onClick={this.handlePlay}>
+            <FontAwesomeIcon icon={faDiceD20} />
+          </Button>
         </TableCell>
       </tr>
     );
