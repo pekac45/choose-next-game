@@ -79,7 +79,7 @@ class Edit extends Component {
           <Button>Add Play</Button>
           <Button>Remove Play</Button>
         </Cell>
-        <Cell left={4} width={6} center top={4}>
+        <Cell left={4} width={6} center top={4} style={{ zIndex: `10` }}>
           <FormGroupWrapper onSubmit={this.handleSubmit}>
             <InputWrapper
               type="text"

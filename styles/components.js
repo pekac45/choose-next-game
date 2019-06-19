@@ -44,7 +44,7 @@ export const AnchorWrapper = styled.a`
   height: 100%;
   text-align: center;
   text-decoration: none;
-  padding-top: 12.5%;
+  padding-top: 10%;
 
   transition: 0.3s;
 
@@ -121,6 +121,8 @@ export const InputWrapper = styled.input`
   border-top: ${props => (props.borderTop ? '1px solid var(--main-color)' : 'none')};
   border-radius: 0;
   color: inherit;
+  z-index: 10;
+
   /* outline: 0; */
   padding: 1rem;
   text-decoration: none;
