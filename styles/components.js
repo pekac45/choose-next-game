@@ -11,7 +11,8 @@ export const GlobalStyle = createGlobalStyle`
 
 		background-color: var(--secondary-color);
 
-		text-align: center;
+    text-align: center;
+
 	}
 	:root {
 		--main-color: #3d1f68;
@@ -21,6 +22,12 @@ export const GlobalStyle = createGlobalStyle`
 
 export const HeaderWrapper = styled.div`
   border-bottom: 3px solid var(--main-color);
+  width: 100vw;
+  height: 50px;
+`;
+
+export const FooterWrapper = styled.div`
+  border-top: 3px solid var(--main-color);
   width: 100vw;
   height: 50px;
 `;
@@ -68,7 +75,8 @@ export const Button = styled.button`
   text-decoration: none;
 
   transition: 0.3s;
-  padding-top: ${props => (props.padding ? '3px' : '2px')};
+  padding-top: ${props => (props.padding ? '2px' : '2px')};
+  /* background-color: ${props => (props.danger ? '#ff2323' : 'var(--main-color)')}; */
 
   :hover {
     color: var(--secondary-color);
@@ -87,7 +95,7 @@ export const InputWrapper = styled.input`
   display: inline-block;
 
   border: none;
-  margin-top: 0;
+  margin-top: ${props => (props.borderTop ? '-1px' : '0')};
   border-top: ${props => (props.borderTop ? '1px solid var(--main-color)' : 'none')};
   border-radius: 0;
   color: inherit;
@@ -95,7 +103,8 @@ export const InputWrapper = styled.input`
   padding: 1rem;
   text-decoration: none;
   width: 20vw;
-  /* height: 3.44rem; */
+  height: calc(100% - 2rem);
+  /* height: calc(3.56rem - 2.06rem); */
 
   font-size: 1.2rem;
   font-family: 'Dosis', sans-serif;
