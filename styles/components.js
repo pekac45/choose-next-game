@@ -4,7 +4,7 @@ import Select from 'react-select';
 export const GlobalStyle = createGlobalStyle`
   body {
 		margin: 0;
-		padding: 0;
+    padding: 0;
 
 		@import url('https://fonts.googleapis.com/css?family=Dosis');
 		font-family: 'Dosis', sans-serif;
@@ -30,6 +30,9 @@ export const FooterWrapper = styled.div`
   border-top: 3px solid var(--main-color);
   width: 100vw;
   height: 50px;
+
+  position: absolute;
+  top: calc(100vh - 53px);
 `;
 
 export const LinkWrapper = styled.button`
