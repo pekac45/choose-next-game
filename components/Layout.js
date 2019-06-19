@@ -1,4 +1,5 @@
 import { Grid, Cell } from 'styled-css-grid';
+import PropTypes from 'prop-types';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -9,11 +10,15 @@ const Layout = props => (
   <LayoutWrapper>
     <GlobalStyle />
     <Header />
-    <Grid gap="0px" rows="minmax(45px,auto) 1fr 3.50rem 3.50rem 1fr 1fr 1fr 1fr 1fr" columns={12}>
+    <Grid gap="0px" rows={10} height="45px">
       {props.children}
     </Grid>
     <Footer />
   </LayoutWrapper>
 );
+
+Layout.propTypes = {
+  children: PropTypes.array
+};
 
 export default Layout;

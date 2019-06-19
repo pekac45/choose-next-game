@@ -35,6 +35,25 @@ export const FooterWrapper = styled.div`
   top: calc(100vh - 53px);
 `;
 
+export const AnchorWrapper = styled.a`
+  color: var(--main-color);
+  text-transform: uppercase;
+  font-family: 'Dosis', sans-serif;
+  background-color: transparent;
+
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+  padding-top: 12.5%;
+
+  transition: 0.3s;
+
+  :hover {
+    color: var(--secondary-color);
+    background-color: var(--main-color);
+  }
+`;
+
 export const LinkWrapper = styled.button`
   color: var(--main-color);
   text-transform: uppercase;

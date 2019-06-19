@@ -12,12 +12,12 @@ const Header = () => (
       </Cell>
       <Cell left={10} center middle>
         <Link href="/Add">
-          <LinkWrapper left={10}>Add Game</LinkWrapper>
+          <LinkWrapper>Add Game</LinkWrapper>
         </Link>
       </Cell>
       <Cell left={11} center middle>
         <Link href="/Edit">
-          <LinkWrapper left={11}>Edit Game</LinkWrapper>
+          <LinkWrapper>Edit Game</LinkWrapper>
         </Link>
       </Cell>
       <Cell left={12} center middle>
