@@ -16,7 +16,8 @@ export const GlobalStyle = createGlobalStyle`
 	}
 	:root {
 		--main-color: #3d1f68;
-		--secondary-color: #efefef;
+    --secondary-color: #efefef;
+    --danger-color: #ff2323;
 	}
 `;
 
@@ -97,13 +98,12 @@ export const Button = styled.button`
   text-decoration: none;
 
   transition: 0.3s;
-  padding-top: ${props => (props.padding ? '2px' : '2px')};
-  background-color: ${props => (props.danger ? '#ff2323' : 'var(--main-color)')};
-  /* outline: 1px solid green; */
+  padding-top: ${props => (props.padding ? '3px' : '2px')};
+  /* background-color: ${props => (props.danger ? '#ff2323' : 'var(--main-color)')}; */
 
   :hover {
     color: var(--secondary-color);
-    /* background-color: ${props => (props.danger ? '#ff2323' : 'var(--main-color)')}; */
+    background-color: ${props => (props.danger ? 'var(--danger-color)' : 'var(--main-color)')};
   }
 `;
 
@@ -111,16 +111,16 @@ export const FormGroupWrapper = styled.form`
   display: inline-block;
   height: 100%;
   vertical-align: top;
-  /* outline: 1px solid red; */
 `;
 
 export const InputWrapper = styled.input`
   display: inline-block;
 
   border: none;
-  /* margin-top: ${props => (props.borderTop ? '-1px' : '0')}; */
+  /* border: 1px solid var(--danger-color); */
 
   box-shadow: ${props => (props.borderTop ? '0 -1px 0 var(--main-color)' : 'none')};
+  box-shadow: ${props => props.error};
 
   border-radius: 0;
   color: inherit;
