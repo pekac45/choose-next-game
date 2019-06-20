@@ -79,22 +79,25 @@ class Edit extends Component {
           <Button>Add Play</Button>
           <Button>Remove Play</Button>
         </Cell>
-        <Cell left={4} width={6} center top={4} style={{ zIndex: `10` }}>
-          <FormGroupWrapper onSubmit={this.handleSubmit}>
-            <InputWrapper
-              type="text"
-              placeholder={selectedOption.label}
-              onChange={this.handleInputChange}
-              borderTop
-            />
-            <Button padding type="submit" value="Submit" onClick={this.handleNameChange}>
-              Change name
-            </Button>
-            <Button padding danger onClick={this.handleDelete}>
-              Delete Game
-            </Button>
-          </FormGroupWrapper>
-        </Cell>
+
+        {selectedOption ? (
+          <Cell left={4} width={6} center top={4} style={{ zIndex: 10 }}>
+            <FormGroupWrapper onSubmit={this.handleSubmit}>
+              <InputWrapper
+                type="text"
+                placeholder={selectedOption.label}
+                onChange={this.handleInputChange}
+                borderTop
+              />
+              <Button padding type="submit" value="Submit" onClick={this.handleNameChange}>
+                Change name
+              </Button>
+              <Button padding danger onClick={this.handleDelete}>
+                Delete Game
+              </Button>
+            </FormGroupWrapper>
+          </Cell>
+        ) : null}
       </Layout>
     );
   }

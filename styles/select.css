@@ -20,5 +20,5 @@
   width: calc(32px + 20vw) !important;
   border-radius: 0 !important;
   border: none !important;
-  z-index: 1;
+  z-index: 1000;
 }

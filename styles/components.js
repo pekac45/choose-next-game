@@ -98,11 +98,12 @@ export const Button = styled.button`
 
   transition: 0.3s;
   padding-top: ${props => (props.padding ? '2px' : '2px')};
-  /* background-color: ${props => (props.danger ? '#ff2323' : 'var(--main-color)')}; */
+  background-color: ${props => (props.danger ? '#ff2323' : 'var(--main-color)')};
+  /* outline: 1px solid green; */
 
   :hover {
     color: var(--secondary-color);
-    background-color: ${props => (props.danger ? '#ff2323' : 'var(--main-color)')};
+    /* background-color: ${props => (props.danger ? '#ff2323' : 'var(--main-color)')}; */
   }
 `;
 
@@ -117,11 +118,12 @@ export const InputWrapper = styled.input`
   display: inline-block;
 
   border: none;
-  margin-top: ${props => (props.borderTop ? '-1px' : '0')};
-  border-top: ${props => (props.borderTop ? '1px solid var(--main-color)' : 'none')};
+  /* margin-top: ${props => (props.borderTop ? '-1px' : '0')}; */
+
+  box-shadow: ${props => (props.borderTop ? '0 -1px 0 var(--main-color)' : 'none')};
+
   border-radius: 0;
   color: inherit;
-  z-index: 10;
 
   /* outline: 0; */
   padding: 1rem;
