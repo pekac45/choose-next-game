@@ -89,6 +89,11 @@ class Add extends Component {
             </Button>
           </FormGroupWrapper>
         </Cell>
+        <Cell left={5} width={3} center top={4}>
+          {isError ? (
+            <p style={{ color: 'var(--danger-color)' }}>Name needs to be 2 characters long.</p>
+          ) : null}
+        </Cell>
       </Layout>
     );
   }
