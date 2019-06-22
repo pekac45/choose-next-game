@@ -2,18 +2,39 @@
 const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_DEV !== 'production'; // true false
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler(); // part of next config
 const mongoose = require('mongoose');
+
 const routes = require('./routes/index');
 const Game = require('./models/gameModel');
 
-const db = mongoose
-  .connect('mongodb://localhost:27017/Games', { useNewUrlParser: true, useFindAndModify: false })
-  .then(console.log('Connection with DB established'));
+// const db = mongoose
+//   .connect('mongodb://localhost:27017/Games', { useNewUrlParser: true, useFindAndModify: false })
+//   .then(console.log('Connection with DB established'));
+
+const dbUrl = process.env.DB_URL;
+const dbOptions = {
+  useNewUrlParser: true,
+  useFindAndModify: false
+};
+
+mongoose
+  .connect(dbUrl, dbOptions)
+  .then(() => {
+    console.log('Connected to database');
+  })
+  .catch(err => {
+    console.log(err);
+    console.log('Not connected to database');
+  });
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 nextApp
   .prepare()
