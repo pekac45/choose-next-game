@@ -8,10 +8,10 @@ router.use(bodyParser.json({ type: 'application/json' }));
 
 router.get('/', (req, res) => {
   Games.find({}, (err, games) => {
+    console.log(games);
+
     res.json(games);
   });
 });
-
-// TODO: ADD FUNCTIONALITY
 
 module.exports = router;

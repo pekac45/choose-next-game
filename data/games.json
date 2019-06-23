@@ -1,0 +1,30 @@
+[
+  {
+    "__v": NumberInt(0),
+    "_id": ObjectId("5d0295a19858427ad8c58e85"),
+    "hotValue": NumberInt(-35),
+    "name": "Test 1",
+    "plays": NumberInt(44)
+  },
+  {
+    "__v": NumberInt(0),
+    "_id": ObjectId("5d0295aa9858427ad8c58e89"),
+    "hotValue": NumberInt(-35),
+    "name": "Test 4",
+    "plays": NumberInt(49)
+  },
+  {
+    "__v": NumberInt(0),
+    "_id": ObjectId("5d0b7557736eddcf0ed8f985"),
+    "hotValue": NumberInt(-34),
+    "name": "ab",
+    "plays": NumberInt(0)
+  },
+  {
+    "__v": NumberInt(0),
+    "_id": ObjectId("5d0b755e736eddcf0ed8f986"),
+    "hotValue": NumberInt(-33),
+    "name": "Go",
+    "plays": NumberInt(0)
+  }
+]

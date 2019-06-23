@@ -26,44 +26,43 @@ class Add extends Component {
   }
 
   handleSubmit(e) {
-    if (!this.canBeSubmitted()) {
-      e.preventDefault();
+    // Make more input sanitizing
+    e.preventDefault();
 
-      // Find out what is the current highest hottnes
-      fetch('http://localhost:3000/api/games')
-        .then(results => {
-          return results.json();
-        })
-        .then(data => {
-          // Make sure it works if there are no games in DB
-          let hotValue = () => {
-            if (data.length === 0) {
-              hotValue = 10000;
-            } else {
-              // eslint-disable-next-line prefer-destructuring
-              hotValue = _.orderBy(data, ['hotValue'], ['desc', 'asc'])[0].hotValue + 1;
-            }
-          };
-          hotValue();
+    // Find out what is the current highest hottnes
+    fetch('http://localhost:3000/api/games')
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        // Make sure it works if there are no games in DB
+        let hotValue = () => {
+          if (data.length === 0) {
+            hotValue = 10000;
+          } else {
+            // eslint-disable-next-line prefer-destructuring
+            hotValue = _.orderBy(data, ['hotValue'], ['desc', 'asc'])[0].hotValue + 1;
+          }
+        };
+        hotValue();
 
-          const form = document.forms.addGame;
-          const game = form.name.value;
-          const messageBody = JSON.stringify({
-            name: game,
-            hotValue
-          });
-
-          fetch(`http://localhost:3000/api/games`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: messageBody
-          });
-
-          form.name.value = '';
+        const form = document.forms.addGame;
+        const game = form.name.value;
+        const messageBody = JSON.stringify({
+          name: game,
+          hotValue
         });
-    }
+
+        fetch(`http://localhost:3000/api/games`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: messageBody
+        });
+
+        form.name.value = '';
+      });
   }
 
   render() {
