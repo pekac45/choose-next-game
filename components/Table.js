@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiceD20 } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import { confirmAlert } from 'react-confirm-alert';
+import Link from 'next/link';
 
-import { TableCell, Button } from '../styles/components';
+import { TableCell, Button, LinkWrapper } from '../styles/components';
 import '../styles/confirm.css';
 
 const _ = require('lodash');
@@ -118,9 +119,18 @@ class GameList extends Component {
     const { games } = this.state;
     return (
       <div>
-        <table>
-          <tbody>{games}</tbody>
-        </table>
+        {games.length === 0 ? (
+          <p>
+            Add new games
+            <LinkWrapper href="/Add">here</LinkWrapper>
+          </p>
+        ) : (
+          <table>
+            <table>
+              <tbody>{games}</tbody>
+            </table>
+          </table>
+        )}
       </div>
     );
   }

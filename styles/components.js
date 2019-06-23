@@ -139,7 +139,7 @@ export const InputWrapper = styled.input`
   box-shadow: ${props => props.error};
 
   border-radius: 0;
-  color: inherit;
+  color: var(--secondary-color);
 
   /* outline: 0; */
   padding: 1rem;
