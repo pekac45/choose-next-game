@@ -16,7 +16,7 @@ body.react-confirm-alert-body-element {
   bottom: 0;
   z-index: 99;
 
-  background: rgba(255, 255, 255, 0.9);
+  /* background: var(--secondary-color); */
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
@@ -38,7 +38,7 @@ body.react-confirm-alert-body-element {
   width: 400px;
   padding: 30px;
   text-align: left;
-  background: #fff;
+  background: var(--secondary-color);
   border-radius: 0;
   box-shadow: 0 20px 75px rgba(0, 0, 0, 0.13);
   color: var(--main-color);

@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import Select from 'react-select';
+import dice from './dice.jpg';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -9,14 +10,29 @@ export const GlobalStyle = createGlobalStyle`
 		@import url('https://fonts.googleapis.com/css?family=Dosis');
 		font-family: 'Dosis', sans-serif;
 
-		background-color: var(--secondary-color);
 
     text-align: center;
 
+    background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../images/london.jpg);
+
+    background-image: linear-gradient(
+      to right bottom,
+      rgba(25, 0, 20, 0.8),
+      rgba(0,0,0,0.8)
+    ), url(${dice});
+
+    background-color: var(--secondary-color); /* Used if the image is unavailable */
+    /* background-position: center; */
+    background-size: 100vw 100vh; /* Resize the background image to cover the entire container */
 	}
 	:root {
-		--main-color: #3d1f68;
-    --secondary-color: #efefef;
+		--main-color: #FFFFFF;
+    --secondary-color: #1A0818;
     --danger-color: #ff2323;
 	}
 `;
@@ -135,6 +151,8 @@ export const InputWrapper = styled.input`
   font-size: 1.2rem;
   font-family: 'Dosis', sans-serif;
   font-weight: 400;
+
+  z-index: 3;
 `;
 
 export const ReactSelectWrapper = styled(Select)`
@@ -142,7 +160,7 @@ export const ReactSelectWrapper = styled(Select)`
   color: var(--main-color);
   width: calc(32px + 20vw);
   display: inline-block;
-  background-color: #ffffff;
+  background-color: var(--secondary-color);
   border: null;
 `;
 

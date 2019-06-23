@@ -81,7 +81,7 @@ class Edit extends Component {
         </Cell>
 
         {selectedOption ? (
-          <Cell left={4} width={6} center top={4} style={{ zIndex: 10 }}>
+          <Cell left={4} width={6} center top={4} style={{ zIndex: 0 }}>
             <FormGroupWrapper onSubmit={this.handleSubmit}>
               <InputWrapper
                 type="text"

@@ -33,6 +33,7 @@
     "lodash": "^4.17.11",
     "mongoose": "^5.5.13",
     "next": "^8.1.0",
+    "next-images": "^1.1.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-confirm-alert": "^2.4.1",
