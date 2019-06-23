@@ -122,7 +122,9 @@ class GameList extends Component {
         {games.length === 0 ? (
           <p>
             Add new games
-            <LinkWrapper href="/Add">here</LinkWrapper>
+            <Link href="/Add">
+              <LinkWrapper>here</LinkWrapper>
+            </Link>
           </p>
         ) : (
           <table>
