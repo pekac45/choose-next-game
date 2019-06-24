@@ -41,6 +41,7 @@ export const HeaderWrapper = styled.div`
   border-bottom: 3px solid var(--main-color);
   width: 100vw;
   height: 50px;
+  background-color: rgba(25, 0, 20, 0.5);
 `;
 
 export const FooterWrapper = styled.div`
@@ -50,6 +51,7 @@ export const FooterWrapper = styled.div`
 
   position: absolute;
   top: calc(100vh - 53px);
+  background-color: rgba(25, 0, 20, 0.5);
 `;
 
 export const AnchorWrapper = styled.a`
