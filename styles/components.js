@@ -13,28 +13,27 @@ export const GlobalStyle = createGlobalStyle`
 
     text-align: center;
 
-    background-image: linear-gradient(
-      to right bottom,
-      rgba($color-primary-light, 0.8),
-      rgba($color-primary-dark, 0.8)
-    ),
-    url(../images/london.jpg);
-
-    background-image: linear-gradient(
-      to right bottom,
-      rgba(25, 0, 20, 0.8),
-      rgba(0,0,0,0.8)
-    ), url(${dice});
-
-    background-color: var(--secondary-color); /* Used if the image is unavailable */
-    /* background-position: center; */
-    background-size: 100vw 100vh; /* Resize the background image to cover the entire container */
 	}
 	:root {
 		--main-color: #FFFFFF;
     --secondary-color: #1A0818;
     --danger-color: #ff2323;
 	}
+`;
+
+export const PageWrapper = styled.div`
+  background-image: linear-gradient(to right bottom, rgba(25, 0, 20, 0.8), rgba(0, 0, 0, 0.8)),
+    url(${dice});
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 10% 28%;
+
+  background-color: var(--secondary-color); /* Used if the image is unavailable */
+  width: 100vw;
+  height: 100vh;
+
+  z-index: -100;
 `;
 
 export const HeaderWrapper = styled.div`
