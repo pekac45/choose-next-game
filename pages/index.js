@@ -8,7 +8,7 @@ const Index = () => (
     <Cell left={5} width={4} center>
       <h1>Choose next game</h1>
     </Cell>
-    <Cell left={2} width={8} top={3}>
+    <Cell left={4} width={10} top={3}>
       <GameList />
     </Cell>
   </Layout>

@@ -31,20 +31,20 @@ class GameRow extends Component {
           label: 'Yes',
           id: 'confirmButton',
           onClick: () => {
-            console.log('pressed yes on', this.props.game);
             fetch(`http://localhost:3000/api/games/${this.props.id}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json'
               }
-            }).then(this.props.propsFromParent());
+            }).then(() => {
+              this.props.propsFromParent();
+              this.forceUpdate();
+            });
           }
         },
         {
           label: 'No',
-          onClick: () => {
-            console.log('pressed no on', this.props.game);
-          }
+          onClick: () => {}
         }
       ]
     });
@@ -91,8 +91,6 @@ class GameList extends Component {
   handleGames() {
     fetch('http://localhost:3000/api/games')
       .then(results => {
-        console.log('fetching');
-
         return results.json();
       })
       .then(data => {
@@ -105,13 +103,11 @@ class GameList extends Component {
             id={game._id}
             propsFromParent={() => {
               this.setState({ counter: counter + 1 });
-              console.log(counter);
             }}
           />
         ));
 
         this.setState({ games: parsedGames });
-        console.log('fetched ', parsedGames);
       });
   }
 
