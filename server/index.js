@@ -3,6 +3,7 @@ const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
+const cors = require('cors');
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_DEV !== 'production'; // true false
@@ -17,7 +18,7 @@ const Game = require('./models/gameModel');
 //   .connect('mongodb://localhost:27017/Games', { useNewUrlParser: true, useFindAndModify: false })
 //   .then(console.log('Connection with DB established'));
 
-const dbUrl = process.env.DB_URL;
+const dbUrl = 'mongodb://testuser:9VmdK3uECiWH@ds021016.mlab.com:21016/choose-next-game';
 const dbOptions = {
   useNewUrlParser: true,
   useFindAndModify: false
@@ -41,9 +42,11 @@ nextApp
   .then(() => {
     // express code here
     const app = express();
+    app.use(cors());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use('/api/games', routes);
+
     app.get('*', (req, res) => {
       return handle(req, res); // for all the react stuff
     });
